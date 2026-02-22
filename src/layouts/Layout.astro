@@ -1,23 +1,35 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '@/styles/global.css'
+import Header from '@/components/Header.astro'
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!doctype html>
+  <html lang='en'>
+    <head>
+      <meta charset='UTF-8' />
+      <meta name='viewport' content='width=device-width' />
+      <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+      <link rel='icon' href='/favicon.ico' />
+      <meta name='generator' content={Astro.generator} />
+      <title>Jeanpkdz - Portfolio</title>
+    </head>
+    <body
+      class='min-w-dvw min-h-dvh bg-gray-50 dark:bg-gray-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]'
+    >
+      <Header />
+      <slot />
+    </body>
+
+    <style>
+    :root {
+      color-scheme: light dark;
+    }
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+  </html>

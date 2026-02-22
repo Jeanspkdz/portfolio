@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.17.1"
+    "@tailwindcss/vite": "^4.2.0",
+    "astro": "^5.17.1",
+    "tailwindcss": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.36.0",
+    "eslint-plugin-astro": "^1.6.0",
+    "neostandard": "^0.12.2"
   }
 }
