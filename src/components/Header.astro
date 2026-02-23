@@ -2,23 +2,25 @@
 
 ---
 
-  <header>
-    <nav class='flex gap-4'>
-      <ul>
-        <li><a href='#experience'>Experience</a></li>
-        <li><a href='#projects'>Projects</a></li>
-        <li><a href='#about'>About Me</a></li>
-        <li><a href='#contact'>Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="absolute top-0 w-full">
+  <nav class="w-max mx-auto py-3 px-2 rounded-md">
+    <ul class="flex gap-3">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <style>
+<style>
+  @reference "tailwindcss";
+
   nav {
     scroll-target-group: auto;
 
     & a:is(:target-current, :hover) {
-      /* @apply text-blue-700 */
+      @apply text-blue-500;
     }
   }
-    </style>
+</style>
