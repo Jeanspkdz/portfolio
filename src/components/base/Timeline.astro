@@ -1,0 +1,31 @@
+---
+import TimelineItem from './TimelineItem.astro'
+import type { ComponentProps } from 'astro/types'
+
+const EXPERIENCE: ComponentProps<typeof TimelineItem>[] = [
+  {
+    date: '2020',
+    title: 'Started University',
+    description: 'Began my Systems Engineering degree, strengthening my foundations in programming and software development.',
+  },
+  {
+    date: '2021',
+    title: 'Started my web development journey',
+    description: 'Got involved in the web development world, discovering my passion for building things for the web.',
+  },
+  {
+    date: '2025',
+    title: 'Systems Engineering Graduate',
+    description: 'Graduated from university with a degree in Systems Engineering, ready to take on new professional challenges.',
+  },
+]
+---
+<ol class="relative border-s border-default space-y-4">
+    {EXPERIENCE.toReversed().map(exp => (
+      <TimelineItem
+        date={exp.date}
+        title={exp.title}
+        description={exp.description}
+      />
+    ))}
+</ol>
