@@ -7,13 +7,27 @@ const navItems = [
 ];
 ---
 
-<header class="z-50 sticky top-3 w-full">
-  <nav class="w-max mx-auto py-2 px-4 rounded-full text-sm">
-    <ul class="flex gap-5 md:gap-10">
+<header
+  class="z-50 fixed top-0 left-0 right-0 w-full px-16 py-4 pb-6 flex items-center justify-between"
+>
+  <a
+    href="/"
+    class="text-white font-mono font-bold tracking-widest uppercase text-sm"
+  >
+    JEANPKDZ
+  </a>
+
+  <nav>
+    <ul class="flex gap-8">
       {
         navItems.map((navItem) => (
           <li>
-            <a href={navItem.href} class="transition-colors">{navItem.label}</a>
+            <a
+              href={navItem.href}
+              class="text-gray-400 hover:text-white text-sm tracking-wide transition-colors duration-200"
+            >
+              {navItem.label}
+            </a>
           </li>
         ))
       }
@@ -24,23 +38,46 @@ const navItems = [
 <style>
   @reference "tailwindcss";
 
-  nav {
-    scroll-target-group: auto;
+  header {
     animation: nav-scroll auto linear forwards;
     animation-timeline: scroll(root block);
     animation-range: 10% 30%;
+  }
+
+  nav {
+    position: relative;
+    scroll-target-group: auto;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: " ";
+      height: 3px;
+      width: calc(anchor-size(width) / 2);
+      background-color: var(--color-blue-500);
+      position-anchor: --active-section;
+      top: calc(anchor(bottom) + 5px);
+      left: anchor(left);
+      transition-property: top, left;
+      transition-duration: 400ms;
+      transition-timing-function: ease-in-out;
+    }
 
     @supports (scroll-target-group: auto) {
       & a:is(:target-current, :hover) {
         @apply text-blue-500;
+      }
+
+      & a:target-current {
+        anchor-name: --active-section;
       }
     }
   }
 
   @keyframes nav-scroll {
     to {
-      background-color: light-dark(white, var(--color-gray-800));
-      box-shadow: var(--shadow-lg);
+      background-color: light-dark(white, var(--color-gray-900));
+      box-shadow: 0 8px 20px 0 rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(var(--blur));
     }
   }

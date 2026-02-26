@@ -2,14 +2,10 @@
 import SectionWrapper from '@/components/layout/SectionWrapper.astro'
 import Timeline from '@/components/base/Timeline.astro'
 import Heading from '@/components/base/Heading.astro'
-import { History } from '@lucide/astro'
+import History from '@/assets/icons/history.svg';
 ---
 
-<SectionWrapper id='timeline' class='py-10 md:py-20'>
-  <Heading
-    icon={History}
-    title='My Journey'
-  />
-
-  <Timeline/>
+<SectionWrapper id="timeline" class="py-10 md:py-20">
+  <Heading icon={History} title="My Journey" />
+  <Timeline />
 </SectionWrapper>

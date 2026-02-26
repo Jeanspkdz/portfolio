@@ -2,7 +2,8 @@
 import Badge from '@/components/base/Badge.astro'
 import SectionWrapper from '@/components/layout/SectionWrapper.astro'
 import SocialPill from '@/components/base/SocialPill.astro'
-import { MailPlus, Linkedin } from '@lucide/astro';
+import LinkedinLogo from '@/assets/icons/linkedin.svg'
+import MailPlus from '@/assets/icons/mailplus.svg'
 ---
 
 <SectionWrapper id='hero' class="py-25 md:py-50">
@@ -28,14 +29,14 @@ import { MailPlus, Linkedin } from '@lucide/astro';
 
   <div class="flex gap-3 mt-8">
     <SocialPill href="mailto:jeanchua1304@gmail.com">
-      <MailPlus slot="icon" />
+      <MailPlus slot="icon" width={20} height={20} />
       Contact me
     </SocialPill>
 
     <SocialPill
       href="https://www.linkedin.com/in/jean-carlo-chua-aguilar-8a094b308/"
     >
-      <Linkedin slot="icon" />
+      <LinkedinLogo slot="icon" width={20} height={20} />
       Linkedn
     </SocialPill>
   </div>
