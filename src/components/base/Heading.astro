@@ -1,0 +1,15 @@
+---
+import { Icon as IconType } from '@lucide/astro'
+
+interface Props {
+  icon: typeof IconType;
+  title: string;
+}
+
+const { icon: Icon, title } = Astro.props;
+---
+
+<div class="flex items-center gap-2 text-white font-bold mb-12">
+  <h2 class="text-3xl">{title}</h2>
+  <Icon class="-order-1" size={35} />
+</div>

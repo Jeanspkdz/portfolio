@@ -1,15 +1,15 @@
 ---
 import SectionWrapper from '@/components/layout/SectionWrapper.astro'
 import Timeline from '@/components/base/Timeline.astro'
+import Heading from '@/components/base/Heading.astro'
 import { History } from '@lucide/astro'
-
 ---
 
 <SectionWrapper id='timeline' class='py-10 md:py-20'>
-  <div class="flex items-center gap-2 text-white font-bold mb-12">
-    <h2 class="text-3xl">My Journey</h2>
-    <History class="-order-1" size={35}/>
-  </div>
+  <Heading
+    icon={History}
+    title='My Journey'
+  />
 
   <Timeline/>
 </SectionWrapper>

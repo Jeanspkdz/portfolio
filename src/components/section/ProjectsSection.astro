@@ -1,0 +1,84 @@
+---
+import Heading from '@/components/base/Heading.astro'
+import ProjectItem from '@/components/base/ProjectItem.astro'
+import SectionWrapper from '@/components/layout/SectionWrapper.astro'
+import { Code } from '@lucide/astro'
+import type { ComponentProps } from 'astro/types'
+import ProjectImage from '@/assets/project01.png'
+import VueIcon from '@/assets/icons/vuejs.svg'
+import NuxtIcon from '@/assets/icons/nuxt.svg'
+import TailwindCssIcon from '@/assets/icons/tailwindcss.svg'
+
+const PROJECTS: ComponentProps<typeof ProjectItem>[] = [
+  {
+    imageUrl: ProjectImage,
+    title: 'Crime Prediction System',
+    stack: [
+      {
+        icon: VueIcon,
+        name: 'VueJS',
+        class: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+      },
+      {
+        icon: NuxtIcon,
+        name: 'NuxtJS',
+        class: 'bg-green-500/10 text-green-400 border border-green-500/20'
+      },
+      {
+        icon: TailwindCssIcon,
+        name: 'Tailwind',
+        class: 'bg-sky-500/10 text-sky-400 border border-sky-500/20'
+      },
+    ],
+    description:
+      'A web platform that predicts high-risk crime areas using machine learning and spatial analysis. It visualizes crime patterns on an interactive map and provides real-time monitoring tools.',
+    codeUrl: 'https://github.com/yourusername/crime-prediction-system',
+  },
+  {
+    imageUrl: ProjectImage,
+    title: 'BLE Proximity Tracker',
+    stack: [
+      {
+        icon: VueIcon,
+        name: 'VueJS',
+        class: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+      },
+      {
+        icon: NuxtIcon,
+        name: 'NuxtJS',
+        class: 'bg-green-500/10 text-green-400 border border-green-500/20'
+      },
+      {
+        icon: TailwindCssIcon,
+        name: 'Tailwind',
+        class: 'bg-sky-500/10 text-sky-400 border border-sky-500/20'
+      },
+    ],
+    description:
+      'A mobile application that detects nearby devices using BLE to estimate distance and track contact duration anonymously.',
+    codeUrl: 'https://github.com/yourusername/ble-proximity-tracker',
+    previewUrl: 'https://github.com/yourusername/ble-proximity-tracker'
+  },
+];
+---
+
+<SectionWrapper id="projects" class="py-10 md:py-20">
+  <Heading icon={Code} title="My Projects" />
+
+  <div class="space-y-16">
+    {
+      PROJECTS.map(
+        ({ codeUrl, description, imageUrl, stack, title, previewUrl }) => (
+          <ProjectItem
+            title={title}
+            description={description}
+            stack={stack}
+            imageUrl={imageUrl}
+            codeUrl={codeUrl}
+            previewUrl={previewUrl}
+          />
+        )
+      )
+    }
+  </div>
+</SectionWrapper>
