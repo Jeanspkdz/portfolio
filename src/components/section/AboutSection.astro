@@ -1,0 +1,45 @@
+---
+import SectionWrapper from '@/components/layout/SectionWrapper.astro'
+import AboutIcon from '@/assets/icons/about.svg'
+import Heading from '@/components/base/Heading.astro';
+---
+
+<SectionWrapper id="about" class:list={['py-10 md:py-20']}>
+  <Heading icon={AboutIcon} title="About me" />
+
+  <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start mt-6">
+    <!-- Text content -->
+    <div class="flex flex-col gap-4 flex-1 text-gray-300 leading-relaxed">
+      <p>
+        My name is Jean Carlo, I'm 22 years old and I'm from Arequipa, Peru. I
+        completed my degree in
+        <span class="text-amber-300 font-semibold">Systems Engineering</span> and
+        I specialize in
+        <span class="text-amber-300 font-semibold">web development</span>. I
+        enjoy focusing on performance and architecture to build solid and
+        maintainable applications.
+      </p>
+
+      <p>
+        I have experience building web applications and I enjoy staying up to
+        date with the latest CSS features. I participated in the development of
+        <span class="text-amber-300 font-semibold">SIGEPRO</span>, a thesis
+        tracking system focused on organizing, monitoring, and optimizing the
+        academic process.
+      </p>
+
+      <p>
+        I'm looking to continue growing as a developer, strengthening my skills
+        in both <span class="text-amber-300 font-semibold">
+          frontend and backend
+        </span>, and delivering well-structured, efficient, and scalable
+        solutions
+      </p>
+    </div>
+
+    <!-- Image placeholder -->
+    <div class="shrink-0 mx-auto md:mx-0">
+      <div class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20 "></div>
+    </div>
+  </div>
+</SectionWrapper>
