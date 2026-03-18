@@ -1,0 +1,43 @@
+---
+import SignatureSvg from '@/assets/icons/signature.svg'
+interface Props {
+  class?: string;
+}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<SignatureSvg class:list={[className]} {...rest} />
+
+<script>
+const PX_PER_SEC = 400
+const path = document.querySelector<SVGPathElement>('.sig-path')
+
+if (path) {
+  const len = Math.ceil(path.getTotalLength())
+  const speed = len / PX_PER_SEC
+  path.style.setProperty('--path-speed', String(speed))
+  // path.setAttribute('pathLength', '1')
+}
+</script>
+
+<style>
+  :global(.sig-path) {
+    stroke-width: 2;
+    /* stroke-dasharray: 0.01 0.005; */
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw calc(var(--path-speed) * 1s) ease-in forwards;
+    /* view-timeline-axis: block;
+    view-timeline-name: --signature;
+    animation: draw  ease-in forwards;
+    animation-timeline: --signature;
+    animation-range: entry 100% entry 210% */
+  }
+
+  :global(@keyframes draw) {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

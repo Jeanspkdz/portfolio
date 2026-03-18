@@ -8,6 +8,7 @@ type NavItem = {
 }
 
 const navItems = [
+  { href: '#hero', label: 'Home' },
   { href: '#timeline', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
   { href: '#about', label: 'About Me' },
@@ -48,29 +49,48 @@ const navItems = [
   header {
     animation: nav-scroll auto linear forwards;
     animation-timeline: scroll(root block);
-    animation-range: 10% 30%;
+    animation-range: 100px 300px;
   }
 
   nav {
     position: relative;
-    scroll-target-group: auto;
-
-    &::after {
-      position: absolute;
-      display: block;
-      content: " ";
-      height: 3px;
-      width: calc(anchor-size(width) / 2);
-      background-color: var(--color-blue-500);
-      position-anchor: --active-section;
-      top: calc(anchor(bottom) + 5px);
-      left: anchor(left);
-      transition-property: top, left;
-      transition-duration: 400ms;
-      transition-timing-function: ease-in-out;
-    }
 
     @supports (scroll-target-group: auto) {
+      scroll-target-group: auto;
+
+      &::after {
+        transition-property:
+          top, width, position, display, left,
+          background-color;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+        transition-behavior: allow-discrete;
+        width: 0px;
+        display: none;
+        content: " ";
+        position:absolute;
+        height: 3px;
+      }
+
+      &:has(li:not(:first-child) a:target-current)::after {
+        display: block;
+        content: " ";
+        position-anchor: --active-section;
+        position: absolute;
+        top: calc(anchor(bottom) + 5px);
+        left: anchor(left);
+        width: calc(anchor-size(width) / 2);
+        background-color: var(--color-blue-500);
+
+        @starting-style {
+          width: 0px;
+        }
+      }
+
+      & li:first-child {
+        display: none;
+      }
+
       & a:is(:target-current, :hover) {
         @apply text-blue-500;
       }
@@ -79,6 +99,11 @@ const navItems = [
         anchor-name: --active-section;
       }
     }
+
+    /* & a[href="#projects"] {
+      animation: paint auto forwards ;
+      animation-timeline: --project-section;
+    } */
   }
 
   @keyframes nav-scroll {
@@ -86,6 +111,12 @@ const navItems = [
       background-color: light-dark(white, var(--color-gray-900));
       box-shadow: 0 8px 20px 0 rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(var(--blur));
+    }
+  }
+
+  @keyframes paint {
+    to {
+      color: var(--color-blue-500);
     }
   }
 </style>

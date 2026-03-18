@@ -4,18 +4,29 @@ import SectionWrapper from '@/components/layout/SectionWrapper.astro'
 import SocialPill from '@/components/base/SocialPill.astro'
 import LinkedinLogo from '@/assets/icons/linkedin.svg'
 import MailPlus from '@/assets/icons/mailplus.svg'
+import Signature from '@/components/base/Signature.astro'
+import { Image } from 'astro:assets'
+import ProfilePhoto from '@/assets/profile_photo_no_bg.webp';
 ---
 
-<SectionWrapper id='hero' class="py-25 md:py-50">
+<SectionWrapper id="hero" class="py-25 md:py-50 relative">
   <div class="flex gap-4 mb-8">
-    <div class="w-15 aspect-square rounded-full bg-amber-300"></div>
+    <div
+      class="relative w-15 aspect-square rounded-full bg-linear-to-br from-blue-400 to-blue-700 overflow-hidden flex items-end justify-center"
+    >
+      <Image
+        src={ProfilePhoto}
+        alt="Profile Image"
+        class="size-14  object-contain"
+      />
+    </div>
     <div class="self-center">
       <Badge>Open to Work</Badge>
     </div>
   </div>
 
-  <div>
-    <h1 class="text-balance text-4xl font-bold mb-6">Hey, soy Jeanpkdz</h1>
+  <div class="relative">
+    <h1 class="text-balance text-5xl font-bold mb-6">Hey, soy Jeanpkdz</h1>
     <p class="text-pretty text-xl text-gray-300 max-w-[55ch]">
       <span class="font-semibold text-amber-300"
         >Junior Full Stack Developer</span
@@ -25,6 +36,7 @@ import MailPlus from '@/assets/icons/mailplus.svg'
         >building web applications</span
       > through personal projects.
     </p>
+    <Signature class:list={['mt-3 -rotate-6']} />
   </div>
 
   <div class="flex gap-3 mt-8">
