@@ -1,4 +1,6 @@
 ---
+import MenuIcon from '@/assets/icons/menu.svg'
+
 export type SectionId = 'hero' | 'about' | 'timeline' | 'projects'
 type SectionIdString = `#${SectionId}`
 
@@ -16,7 +18,7 @@ const navItems = [
 ---
 
 <header
-  class="z-50 fixed top-0 left-0 right-0 w-full px-16 py-4 pb-6 flex items-center justify-between"
+  class="z-50 fixed top-0 left-0 right-0 w-full px-6 md:px-16 py-4 pb-6 flex items-center justify-between"
 >
   <a
     href="/"
@@ -25,7 +27,8 @@ const navItems = [
     JEANPKDZ
   </a>
 
-  <nav>
+  <!-- Desktop nav -->
+  <nav class="hidden md:block" id="desktop-menu">
     <ul class="flex gap-8">
       {
         navItems.map((navItem) => (
@@ -41,7 +44,58 @@ const navItems = [
       }
     </ul>
   </nav>
+
+  <!-- Hamburger button -->
+  <button
+    id="menu-toggle"
+    type="button"
+    class="md:hidden text-gray-400 hover:text-white focus:outline-none"
+    aria-controls="mobile-menu"
+    aria-expanded="false"
+  >
+    <span class="sr-only">Open main menu</span>
+    <MenuIcon />
+  </button>
+
+  <!-- Mobile nav -->
+  <nav
+    id="mobile-menu"
+    class="hidden absolute top-full left-0 right-0 mx-auto mt-4
+  w-11/12 px-6 py-6
+  bg-slate-900
+  border border-slate-700
+  rounded-2xl shadow-xl md:hidden"
+  >
+    <ul class="flex flex-col gap-3">
+      {
+        navItems.map((navItem) => (
+          <li>
+            <a
+              href={navItem.href}
+              class="block px-4 py-2 rounded-lg
+          text-gray-300 hover:text-white
+          hover:bg-slate-800
+          transition-colors duration-200"
+            >
+              {navItem.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </header>
+
+<script>
+const toggle = document.getElementById('menu-toggle')
+const menu = document.getElementById('mobile-menu')
+
+toggle?.addEventListener('click', () => {
+  const isExpanded = toggle.getAttribute('aria-expanded') === 'true'
+  toggle.setAttribute('aria-expanded', String(!isExpanded))
+  menu?.classList.toggle('hidden')
+})
+</script>
 
 <style>
   @reference "tailwindcss";
@@ -50,9 +104,24 @@ const navItems = [
     animation: nav-scroll auto linear forwards;
     animation-timeline: scroll(root block);
     animation-range: 100px 300px;
+
+    &:has(#menu-toggle[aria-expanded="true"]) {
+      background-color: var(--color-gray-900);
+    }
   }
 
-  nav {
+  nav#mobile-menu {
+    @supports (scroll-target-group: auto) {
+      scroll-target-group: auto;
+
+      & a:target-current {
+        color: var(--color-white);
+        background-color: var(--color-slate-800);
+      }
+    }
+  }
+
+  nav#desktop-menu {
     position: relative;
 
     @supports (scroll-target-group: auto) {
@@ -60,15 +129,14 @@ const navItems = [
 
       &::after {
         transition-property:
-          top, width, position, display, left,
-          background-color;
+          top, width, position, display, left, background-color;
         transition-duration: 300ms;
         transition-timing-function: ease-in-out;
         transition-behavior: allow-discrete;
         width: 0px;
         display: none;
         content: " ";
-        position:absolute;
+        position: absolute;
         height: 3px;
       }
 
@@ -108,7 +176,7 @@ const navItems = [
 
   @keyframes nav-scroll {
     to {
-      background-color: light-dark(white, var(--color-gray-900));
+      background-color: var(--color-gray-900);
       box-shadow: 0 8px 20px 0 rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(var(--blur));
     }
