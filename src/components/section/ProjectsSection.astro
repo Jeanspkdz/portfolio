@@ -6,11 +6,17 @@ import type { ComponentProps } from 'astro/types'
 import Code from '@/assets/icons/code.svg'
 import UptaskProjectImage from '@/assets/uptask-project.png'
 import GymProjectImage from '@/assets/gym-project.png'
+import HorizonBankAppImage from '@/assets/horizon-project.webp'
+import NuxtUploadThingImage from '@/assets/nuxt-uploadthing-banner.webp'
 import VueIcon from '@/assets/icons/vuejs.svg'
 import NuxtIcon from '@/assets/icons/nuxt.svg'
 import HtmlIcon from '@/assets/icons/html.svg'
 import CssIcon from '@/assets/icons/css.svg'
 import JsIcon from '@/assets/icons/js.svg'
+import NpmIcon from '@/assets/icons/npm.svg'
+import NextJSIcon from '@/assets/icons/nextjs.svg'
+import ReactIcon from '@/assets/icons/react.svg'
+import TsIcon from '@/assets/icons/typescript.svg'
 import TailwindCssIcon from '@/assets/icons/tailwindcss.svg'
 
 const PROJECTS: ComponentProps<typeof ProjectItem>[] = [
@@ -40,6 +46,61 @@ const PROJECTS: ComponentProps<typeof ProjectItem>[] = [
     codeUrl: 'https://github.com/Jeanspkdz/uptask-nuxt'
   },
   {
+    imageUrl: HorizonBankAppImage,
+    title: 'Horizon Bank App',
+    stack: [
+      {
+        icon: ReactIcon,
+        name: 'React',
+        class: 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20'
+      },
+      {
+        icon: NextJSIcon,
+        name: 'Next.js',
+        class: 'bg-zinc-500/10 text-zinc-300 border border-zinc-500/20'
+      },
+      {
+        icon: TailwindCssIcon,
+        name: 'Tailwind',
+        class: 'bg-sky-500/10 text-sky-400 border border-sky-500/20'
+      },
+      {
+        icon: TsIcon,
+        name: 'TypeScript',
+        class: 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+      },
+    ],
+    description:
+    'A banking application that allows users to securely connect their financial accounts and visualize transactions, balances, and account information in real time through an intuitive dashboard.',
+    previewUrl: '', // Add deployment URL if available
+    codeUrl: 'https://github.com/Jeanspkdz/horizon-bank-app'
+  },
+  {
+    imageUrl: NuxtUploadThingImage,
+    title: 'nuxt-uploadthing',
+    stack: [
+      {
+        icon: NuxtIcon,
+        name: 'Nuxt',
+        class: 'bg-green-500/10 text-green-400 border border-green-500/20'
+      },
+      {
+        icon: TsIcon,
+        name: 'TypeScript',
+        class: 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+      },
+      {
+        icon: NpmIcon,
+        name: 'npm',
+        class: 'bg-red-500/10 text-red-400 border border-red-500/20'
+      },
+    ],
+    description:
+    'An open-source Nuxt module that provides seamless integration with UploadThing, including type-safe file routers, auto-generated upload components, Tailwind CSS support, and server-side route handling. Published on npm and designed to simplify file uploads in Nuxt applications.',
+    previewUrl: 'https://www.npmjs.com/package/nuxt-uploadthing',
+    codeUrl: 'https://github.com/Jeanspkdz/nuxt-uploadthing'
+  },
+  {
     imageUrl: GymProjectImage,
     title: 'Gym Website',
     stack: [
@@ -62,7 +123,8 @@ const PROJECTS: ComponentProps<typeof ProjectItem>[] = [
     description: 'A responsive single-page gym website that presents programs, pricing, and membership information. Built to provide a user-friendly experience and demonstrate front-end development skills',
     codeUrl: 'https://github.com/Jeanspkdz/gym-website',
     previewUrl: 'https://gym-website-umber-kappa.vercel.app/'
-  }
+  },
+
 ];
 ---
 
